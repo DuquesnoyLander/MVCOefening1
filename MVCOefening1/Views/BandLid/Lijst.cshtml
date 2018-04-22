@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MyHobbies.Band>
+
+@{
+    ViewData["Title"] = "Lijst";
+}
+
+<h2>Lijst</h2>
+
+<p>
+    <a asp-action="Maak">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jaar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var band in ViewBag.Bands)
+        {
+            <tr>
+                <td>@band.Naam</td>
+                <td>@band.Jaar</td>
+            </tr>
+        }
+    </tbody>
+</table>

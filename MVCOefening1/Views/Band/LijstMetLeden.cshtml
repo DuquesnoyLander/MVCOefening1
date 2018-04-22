@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MyHobbies.Band>
+
+@{
+    ViewData["Title"] = "LijstMetLeden";
+}
+
+<h2>LijstMetLeden</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<h2>Bands met hun leden</h2>
+
+<ol>
+    @foreach (var band in ViewBag.Bands)
+    {
+        <li>
+            @band.Naam (@band.Jaar)
+            <ul>
+                @foreach (var bandlid in band.Leden)
+                {
+                    <li>
+                        @bandlid.Naam - @bandlid.Leeftijd @(!bandlid.Levend ? "(+)" : "" ) - @bandlid.Geslacht
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+</ol>
